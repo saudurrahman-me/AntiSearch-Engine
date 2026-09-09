@@ -1,0 +1,8 @@
+{
+  "seed_urls": ["https://docs.python.org/3/"],
+  "allowed_domains": ["docs.python.org"],
+  "max_pages": 1500,
+  "max_depth": 10,
+  "crawl_delay_seconds": 0.1,
+  "request_timeout": 5
+}

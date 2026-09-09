@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-glass: rgba(30, 41, 59, 0.7);
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-accent: #38bdf8;
+  --border-glass: rgba(255, 255, 255, 0.1);
+  --shadow-glow: 0 0 20px rgba(56, 189, 248, 0.2);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  background-image: 
+    radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
+    radial-gradient(at 50% 0%, hsla(225,39%,30%,0.2) 0, transparent 50%), 
+    radial-gradient(at 100% 0%, hsla(339,49%,30%,0.2) 0, transparent 50%);
+  background-attachment: fixed;
+}
+
+.app-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  transition: all 0.5s ease;
+}
+
+.app-container.centered {
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  background: linear-gradient(to right, #38bdf8, #818cf8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  letter-spacing: -1px;
+}
+
+.logo span {
+  font-weight: 300;
+}
+
+.search-container {
+  width: 100%;
+  max-width: 700px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.search-input-group {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  background: rgba(30, 30, 40, 0.6);
+  border: 1px solid var(--border-glass);
+  border-radius: 24px;
+  padding: 0 8px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.search-input-group:focus-within {
+  border-color: var(--text-accent);
+  box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2);
+  background: rgba(30, 30, 40, 0.8);
+}
+
+.search-input {
+  flex: 1;
+  padding: 16px 16px;
+  font-size: 1.1rem;
+  border: none;
+  background: transparent;
+  color: var(--text-primary);
+  outline: none;
+  font-family: 'Inter', sans-serif;
+}
+
+.mode-selector {
+  background: rgba(40, 40, 50, 0.8);
+  color: var(--text-primary);
+  border: 1px solid var(--border-glass);
+  border-radius: 16px;
+  padding: 8px 12px;
+  font-size: 0.9rem;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mode-selector:hover {
+  border-color: var(--text-accent);
+}
+
+.search-stats {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.results-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 800px;
+}
+
+.result-card {
+  background: var(--bg-glass);
+  border: 1px solid var(--border-glass);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  animation: slideUp 0.4s ease forwards;
+  opacity: 0;
+}
+
+.result-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.result-url {
+  font-size: 0.85rem;
+  color: #10b981;
+  margin-bottom: 0.4rem;
+  display: block;
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.result-title {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--text-accent);
+  text-decoration: none;
+  margin-bottom: 0.8rem;
+  display: inline-block;
+}
+
+.result-title:hover {
+  text-decoration: underline;
+}
+
+.result-snippet {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.result-snippet b {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.result-metrics {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+  font-size: 0.8rem;
+  color: rgba(148, 163, 184, 0.6);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.loader {
+  border: 3px solid var(--border-glass);
+  border-top: 3px solid var(--text-accent);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+  margin: 2rem auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.stats-mode { color: var(--text-accent); font-weight: 600; }
