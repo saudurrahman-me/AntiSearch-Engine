@@ -20,7 +20,7 @@ AntiSearch is a fully-featured, portfolio-ready search engine built from the gro
 ```mermaid
 flowchart TD
     subgraph Offline Pipeline
-        A["Web Crawler (crawler.py)"] -->|Stores HTML & Links| B[("(SQLite Database)")]
+        A["Web Crawler (crawler.py)"] -->|Stores HTML and Links| B[("(SQLite Database)")]
         B -->|Computes| C["Inverted Index (indexer.py)"]
         B -->|Calculates| D["PageRank Scores"]
         B -->|Generates Embeddings| E[("(FAISS Vector Index)")]
@@ -29,8 +29,8 @@ flowchart TD
     subgraph Online Pipeline
         F["React UI (App.jsx)"] -->|GET /api/search| G["FastAPI Backend (api.py)"]
         G -->|BM25 Query| B
-        G -->|Semantic Query (vector_store.py)| E
-        G -->|RRF Fusion (search_core.py)| G
+        G -->|Semantic Query from vector_store.py| E
+        G -->|RRF Fusion in search_core.py| G
         G -->|JSON Results| F
     end
 ```
